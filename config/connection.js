@@ -3,12 +3,16 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'amelia101',
-    database: 'burgers'
+    database: 'burgers_db'
 })
 
 connection.connect(function(err){
-    if(err)throw err;
-    console.log("connected as id: "+connection.threadid);
+    if(err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
 });
+
 
 module.exports = connection;
